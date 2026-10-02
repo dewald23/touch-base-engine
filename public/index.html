@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch Base Consulting | Agency Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #0A0A0A; color: #FFFFFF; }
+        h1, h2, h3, .brand-font { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <header class="border-b border-zinc-900 bg-[#0A0A0A]/90 sticky top-0 z-50 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-[#B8860B] rounded-full"></span>
+                <span class="brand-font font-bold text-lg tracking-wider text-white">TOUCH BASE <span class="text-[#B8860B]">CONSULTING</span></span>
+            </div>
+            <span class="text-xs uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-1 rounded-full">Hermanus, SA &bull; Agency OS</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10 flex-grow w-full">
+        
+        <div class="flex flex-wrap gap-3 mb-8 border-b border-zinc-900 pb-4">
+            <button onclick="switchTab('agent1')" id="btn-agent1" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#B8860B] text-black transition shadow-lg">1. SEO Audit & CRM</button>
+            <button onclick="switchTab('agent2')" id="btn-agent2" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">2. Micro-Page Preview</button>
+            <button onclick="switchTab('agent3')" id="btn-agent3" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">3. Follow-Up Sequence</button>
+            <button onclick="switchTab('agent4')" id="btn-agent4" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">4. Closing Proposal</button>
+        </div>
+
+        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-6 mb-8 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-[#B8860B] mb-4">Target Prospect Profile</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Business Name</label>
+                    <input type="text" id="businessName" placeholder="e.g. Four Seasons Gardens" value="Four Seasons Gardens" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Industry / Niche</label>
+                    <input type="text" id="industry" placeholder="e.g. Landscaper" value="Landscape designer" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Target Location</label>
+                    <input type="text" id="targetLocation" placeholder="e.g. Overberg / Hermanus" value="Overberg" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
+                </div>
+            </div>
+        </div>
+
+        <div id="view-agent1" class="agent-view space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Local SEO Audit & CRM Logging</h3>
+                    <p class="text-sm text-zinc-400">Analyzes local search gaps via Gemini and auto-logs data into Google Sheets.</p>
+                </div>
+                <button onclick="runAgent1()" id="exec-btn-1" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Run Audit & Log to CRM</button>
+            </div>
+            <div id="output-agent1" class="hidden bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4 text-zinc-300 text-sm leading-relaxed"></div>
+        </div>
+
+        <div id="view-agent2" class="agent-view hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Micro-Landing Page Preview Generator</h3>
+                    <p class="text-sm text-zinc-400">Spins up a cached, branded interactive preview URL for outreach.</p>
+                </div>
+                <button onclick="runAgent2()" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Open Live Preview Page</button>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 text-zinc-400 text-sm">
+                Clicking the button above compiles and opens the dynamic preview page in a new tab.
+            </div>
+        </div>
+
+        <div id="view-agent3" class="agent-view hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Automated Follow-Up Sequence</h3>
+                    <p class="text-sm text-zinc-400">Generates a Day-3 value check-in and Day-7 social proof WhatsApp sequence.</p>
+                </div>
+                <button onclick="runAgent3()" id="exec-btn-3" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Generate Follow-Ups</button>
+            </div>
+            <div id="output-agent3" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-3">Day 3: Value Check-In</h4>
+                    <p id="res-day3" class="text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap"></p>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-3">Day 7: Social Proof Pivot</h4>
+                    <p id="res-day7" class="text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-agent4" class="agent-view hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Tailored Proposal & Closing Brief</h3>
+                    <p class="text-sm text-zinc-400">Builds an executive scope, technical solutions, and ROI investment summary.</p>
+                </div>
+                <button onclick="runAgent4()" id="exec-btn-4" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Generate Proposal Brief</button>
+            </div>
+            <div id="output-agent4" class="hidden space-y-6">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Executive Summary</h4>
+                    <p id="prop-summary" class="text-zinc-300 text-sm"></p>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Recommended Technical Solution</h4>
+                    <ul id="prop-solution" class="list-disc list-inside text-zinc-300 text-sm space-y-1"></ul>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Project Investment & ROI</h4>
+                    <p id="prop-investment" class="text-zinc-300 text-sm whitespace-pre-wrap"></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-zinc-900 text-center py-6 text-xs text-zinc-500 mt-auto">
+        &copy; 2026 Touch Base Consulting, Hermanus, South Africa. All rights reserved.
+    </footer>
+
+    <script>
+        function switchTab(agentId) {
+            document.querySelectorAll('.agent-view').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-[#B8860B]', 'text-black');
+                el.classList.add('bg-zinc-900', 'text-zinc-400');
+            });
+            document.getElementById('view-' + agentId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + agentId);
+            activeBtn.classList.remove('bg-zinc-900', 'text-zinc-400');
+            activeBtn.classList.add('bg-[#B8860B]', 'text-black');
+        }
+
+        function getInputs() {
+            return {
+                businessName: document.getElementById('businessName').value,
+                industry: document.getElementById('industry').value,
+                targetLocation: document.getElementById('targetLocation').value
+            };
+        }
+
+        async function handleApiResponse(res) {
+            const contentType = res.headers.get("content-type");
+            if (!contentType || !contentType.includes("application/json")) {
+                const rawText = await res.text();
+                throw new Error(`Server endpoint returned non-JSON (Status ${res.status}): ${rawText.substring(0, 150)}`);
+            }
+            return await res.json();
+        }
+
+        async function runAgent1() {
+            const btn = document.getElementById('exec-btn-1');
+            const output = document.getElementById('output-agent1');
+            btn.innerText = "Analyzing & Logging...";
+            output.classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/generate-audit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(getInputs())
+                });
+                const data = await handleApiResponse(res);
+
+                if (data.success) {
+                    const audit = data.audit;
+                    output.innerHTML = `
+                        <div><strong class="text-[#B8860B]">Local SEO Score:</strong> ${audit.seo_score}/100</div>
+                        <div><strong class="text-[#B8860B]">Key Pain Points:</strong><ul class="list-disc list-inside mt-1">${audit.key_pain_points.map(p => `<li>${p}</li>`).join('')}</ul></div>
+                        <div><strong class="text-[#B8860B]">Recommended Fix:</strong> ${audit.recommended_fix}</div>
+                        <div><strong class="text-[#B8860B]">WhatsApp Hook:</strong><p class="mt-1 p-3 bg-black rounded border border-zinc-800 text-zinc-300">${audit.whatsappHook}</p></div>
+                        <div class="text-xs text-[#B8860B] pt-2">[Successfully logged to Google Sheets CRM]</div>
+                    `;
+                } else {
+                    output.innerHTML = `<span class="text-red-400">Error: ${data.error}</span>`;
+                }
+            } catch (err) {
+                output.innerHTML = `<span class="text-red-400">Network Error: ${err.message}</span>`;
+            }
+            output.classList.remove('hidden');
+            btn.innerText = "Run Audit & Log to CRM";
+        }
+
+        function runAgent2() {
+            const inputs = getInputs();
+            const slug = inputs.businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            const url = `/api/audit/${slug}?industry=${encodeURIComponent(inputs.industry)}&location=${encodeURIComponent(inputs.targetLocation)}`;
+            window.open(url, '_blank');
+        }
+
+        async function runAgent3() {
+            const btn = document.getElementById('exec-btn-3');
+            const output = document.getElementById('output-agent3');
+            btn.innerText = "Generating...";
+            output.classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/generate-followup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(getInputs())
+                });
+                const data = await handleApiResponse(res);
+
+                if (data.success) {
+                    document.getElementById('res-day3').innerText = data.followUps.dayThreeFollowup;
+                    document.getElementById('res-day7').innerText = data.followUps.daySevenFollowup;
+                    output.classList.remove('hidden');
+                } else {
+                    alert("Error: " + data.error);
+                }
+            } catch (err) {
+                alert("Network Error: " + err.message);
+            }
+            btn.innerText = "Generate Follow-Ups";
+        }
+
+        async function runAgent4() {
+            const btn = document.getElementById('exec-btn-4');
+            const output = document.getElementById('output-agent4');
+            btn.innerText = "Drafting Proposal...";
+            output.classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/generate-proposal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(getInputs())
+                });
+                const data = await handleApiResponse(res);
+
+                if (data.success) {
+                    document.getElementById('prop-summary').innerText = data.proposal.executiveSummary;
+                    const solList = document.getElementById('prop-solution');
+                    solList.innerHTML = data.proposal.recommendedSolution.map(s => `<li>${s}</li>`).join('');
+                    document.getElementById('prop-investment').innerText = data.proposal.projectInvestment;
+                    output.classList.remove('hidden');
+                } else {
+                    alert("Error: " + data.error);
+                }
+            } catch (err) {
+                alert("Network Error: " + err.message);
+            }
+            btn.innerText = "Generate Proposal Brief";
+        }
+    </script>
+</body>
+</html>
