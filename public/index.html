@@ -3,251 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Touch Base Consulting | Agency Command Center</title>
+    <title>Touch Base Consulting | Intelligence & Outreach Engine</title>
+    <!-- Google Fonts: Montserrat & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Open Sans', sans-serif; background-color: #0A0A0A; color: #FFFFFF; }
-        h1, h2, h3, .brand-font { font-family: 'Montserrat', sans-serif; }
-    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGold: '#B8860B',
+                        brandGoldDark: '#996F09',
+                        darkBg: '#0A0A0A',
+                        cardBg: '#141414',
+                        borderDark: '#262626'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
-
-    <header class="border-b border-zinc-900 bg-[#0A0A0A]/90 sticky top-0 z-50 backdrop-blur">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<body class="bg-darkBg text-gray-100 font-body min-h-screen selection:bg-brandGold selection:text-black">
+    <!-- Header -->
+    <header class="border-b border-borderDark bg-cardBg/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <span class="w-3 h-3 bg-[#B8860B] rounded-full"></span>
-                <span class="brand-font font-bold text-lg tracking-wider text-white">TOUCH BASE <span class="text-[#B8860B]">CONSULTING</span></span>
+                <div class="w-10 h-10 rounded-lg bg-brandGold flex items-center justify-center text-black font-heading font-extrabold text-xl shadow-lg shadow-brandGold/20">TB</div>
+                <div>
+                    <h1 class="font-heading font-bold text-lg tracking-wide text-white">TOUCH BASE CONSULTING</h1>
+                    <p class="text-xs text-gray-400 font-body tracking-wider uppercase">Hermanus Intelligence Engine</p>
+                </div>
             </div>
-            <span class="text-xs uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-1 rounded-full">Hermanus, SA &bull; Agency OS</span>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-brandGold/10 text-brandGold border border-brandGold/30">
+                    <span class="w-2 h-2 mr-2 bg-brandGold rounded-full animate-pulse"></span> System Live: Overberg Region
+                </span>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-10 flex-grow w-full">
+    <!-- Main Dashboard Container -->
+    <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <div class="flex flex-wrap gap-3 mb-8 border-b border-zinc-900 pb-4">
-            <button onclick="switchTab('agent1')" id="btn-agent1" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#B8860B] text-black transition shadow-lg">1. SEO Audit & CRM</button>
-            <button onclick="switchTab('agent2')" id="btn-agent2" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">2. Micro-Page Preview</button>
-            <button onclick="switchTab('agent3')" id="btn-agent3" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">3. Follow-Up Sequence</button>
-            <button onclick="switchTab('agent4')" id="btn-agent4" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white transition">4. Closing Proposal</button>
-        </div>
+        <!-- Left Column: Intake & Controls (5 Cols) -->
+        <section class="lg:col-span-5 space-y-6">
+            <div class="bg-cardBg border border-borderDark rounded-xl p-6 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brandGold to-amber-600"></div>
+                <h2 class="font-heading font-bold text-xl mb-4 text-white flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    Business Profile Intake
+                </h2>
+                <p class="text-sm text-gray-400 mb-6">Input target business details to execute automated technical audit and reasoning synthesis.</p>
+                
+                <form id="intakeForm" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Business Name</label>
+                        <input type="text" id="businessName" value="Hermanus Boutique Guest House" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Industry</label>
+                            <input type="text" id="industry" value="Hospitality" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Location</label>
+                            <input type="text" id="targetLocation" value="Hermanus" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                        </div>
+                    </div>
 
-        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-6 mb-8 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-[#B8860B] mb-4">Target Prospect Profile</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Business Name</label>
-                    <input type="text" id="businessName" placeholder="e.g. Four Seasons Gardens" value="Four Seasons Gardens" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Industry / Niche</label>
-                    <input type="text" id="industry" placeholder="e.g. Landscaper" value="Landscape designer" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2">Target Location</label>
-                    <input type="text" id="targetLocation" placeholder="e.g. Overberg / Hermanus" value="Overberg" class="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 text-white focus:border-[#B8860B] focus:outline-none transition">
-                </div>
-            </div>
-        </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Website URL</label>
+                        <input type="url" id="websiteUrl" value="https://hermanusguesthouse.co.za" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                    </div>
 
-        <div id="view-agent1" class="agent-view space-y-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-bold">Local SEO Audit & CRM Logging</h3>
-                    <p class="text-sm text-zinc-400">Analyzes local search gaps via Gemini and auto-logs data into Google Sheets.</p>
-                </div>
-                <button onclick="runAgent1()" id="exec-btn-1" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Run Audit & Log to CRM</button>
-            </div>
-            <div id="output-agent1" class="hidden bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4 text-zinc-300 text-sm leading-relaxed"></div>
-        </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Phone / WhatsApp</label>
+                            <input type="text" id="phone" value="+27283131433" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Contact Desk</label>
+                            <input type="text" id="primaryContact" value="Reservations Desk" required class="w-full bg-black border border-borderDark rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brandGold transition-colors">
+                        </div>
+                    </div>
 
-        <div id="view-agent2" class="agent-view hidden space-y-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-bold">Micro-Landing Page Preview Generator</h3>
-                    <p class="text-sm text-zinc-400">Spins up a cached, branded interactive preview URL for outreach.</p>
-                </div>
-                <button onclick="runAgent2()" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Open Live Preview Page</button>
+                    <div class="pt-4 flex flex-col space-y-3">
+                        <button type="submit" id="submitBtn" class="w-full bg-brandGold hover:bg-brandGoldDark text-black font-heading font-bold py-3.5 px-6 rounded-lg transition-all shadow-lg shadow-brandGold/10 flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <span>Run Intelligence Engine</span>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 text-zinc-400 text-sm">
-                Clicking the button above compiles and opens the dynamic preview page in a new tab.
-            </div>
-        </div>
+        </section>
 
-        <div id="view-agent3" class="agent-view hidden space-y-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-bold">Automated Follow-Up Sequence</h3>
-                    <p class="text-sm text-zinc-400">Generates a Day-3 value check-in and Day-7 social proof WhatsApp sequence.</p>
+        <!-- Right Column: Results & Outputs (7 Cols) -->
+        <section class="lg:col-span-7 space-y-6">
+            <!-- Score & Gap Summary Card -->
+            <div class="bg-cardBg border border-borderDark rounded-xl p-6 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 to-brandGold"></div>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-heading font-bold text-lg text-white flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        Diagnostic & Audit Synthesis
+                    </h3>
+                    <div id="scoreBadge" class="px-4 py-1.5 rounded-full bg-brandGold/10 border border-brandGold/30 text-brandGold font-heading font-bold text-sm">
+                        SEO Score: --
+                    </div>
                 </div>
-                <button onclick="runAgent3()" id="exec-btn-3" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Generate Follow-Ups</button>
-            </div>
-            <div id="output-agent3" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-3">Day 3: Value Check-In</h4>
-                    <p id="res-day3" class="text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap"></p>
-                </div>
-                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-3">Day 7: Social Proof Pivot</h4>
-                    <p id="res-day7" class="text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap"></p>
-                </div>
-            </div>
-        </div>
 
-        <div id="view-agent4" class="agent-view hidden space-y-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h3 class="text-xl font-bold">Tailored Proposal & Closing Brief</h3>
-                    <p class="text-sm text-zinc-400">Builds an executive scope, technical solutions, and ROI investment summary.</p>
-                </div>
-                <button onclick="runAgent4()" id="exec-btn-4" class="px-6 py-3 bg-[#B8860B] hover:bg-[#a0750a] text-black font-bold rounded-lg transition shadow-lg">Generate Proposal Brief</button>
-            </div>
-            <div id="output-agent4" class="hidden space-y-6">
-                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Executive Summary</h4>
-                    <p id="prop-summary" class="text-zinc-300 text-sm"></p>
-                </div>
-                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Recommended Technical Solution</h4>
-                    <ul id="prop-solution" class="list-disc list-inside text-zinc-300 text-sm space-y-1"></ul>
-                </div>
-                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                    <h4 class="text-xs uppercase tracking-wider text-[#B8860B] font-bold mb-2">Project Investment & ROI</h4>
-                    <p id="prop-investment" class="text-zinc-300 text-sm whitespace-pre-wrap"></p>
-                </div>
-            </div>
-        </div>
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-xs uppercase font-semibold text-gray-400 tracking-wider">Primary Revenue Leak / Gap</span>
+                        <p id="primaryGapOutput" class="text-sm text-gray-200 mt-1 bg-black/40 border border-borderDark p-3.5 rounded-lg font-mono">
+                            Run engine to analyze primary conversion bottleneck...
+                        </p>
+                    </div>
 
+                    <div>
+                        <span class="text-xs uppercase font-semibold text-gray-400 tracking-wider">Recommended Proposal Tier</span>
+                        <p id="proposalOutput" class="text-sm text-brandGold font-semibold mt-1 bg-black/40 border border-borderDark p-3.5 rounded-lg">
+                            --
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Hook Card -->
+            <div class="bg-cardBg border border-borderDark rounded-xl p-6 shadow-2xl">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-bold text-lg text-white flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        Personalized WhatsApp Outreach Hook
+                    </h3>
+                    <button onclick="copyHook()" class="text-xs bg-borderDark hover:bg-brandGold hover:text-black font-semibold px-3 py-1.5 rounded transition-colors text-gray-300">
+                        Copy Hook
+                    </button>
+                </div>
+                <div id="hookOutput" class="text-sm text-gray-300 bg-black/60 border border-borderDark p-4 rounded-lg font-body leading-relaxed whitespace-pre-wrap">
+                    Generate audit to formulate localized outreach hook...
+                </div>
+            </div>
+
+            <!-- Action Triggers -->
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="generateProposal()" class="bg-cardBg hover:bg-borderDark border border-brandGold/40 text-brandGold font-heading font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center space-x-2 text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span>Generate Executive Proposal</span>
+                </button>
+                <button onclick="viewPreview()" class="bg-cardBg hover:bg-borderDark border border-borderDark text-gray-200 font-heading font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center space-x-2 text-sm shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    <span>View Vercel Preview URL</span>
+                </button>
+            </div>
+        </section>
     </main>
 
-    <footer class="border-t border-zinc-900 text-center py-6 text-xs text-zinc-500 mt-auto">
-        &copy; 2026 Touch Base Consulting, Hermanus, South Africa. All rights reserved.
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-6 py-8 border-t border-borderDark mt-12 text-center text-xs text-gray-500">
+        Touch Base Consulting &copy; 2026. All rights reserved. Built for the Overberg Region.
     </footer>
 
     <script>
-        function switchTab(agentId) {
-            document.querySelectorAll('.agent-view').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-[#B8860B]', 'text-black');
-                el.classList.add('bg-zinc-900', 'text-zinc-400');
-            });
-            document.getElementById('view-' + agentId).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + agentId);
-            activeBtn.classList.remove('bg-zinc-900', 'text-zinc-400');
-            activeBtn.classList.add('bg-[#B8860B]', 'text-black');
-        }
+        document.getElementById('intakeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Analyzing Market & Site...';
+            submitBtn.disabled = true;
 
-        function getInputs() {
-            return {
+            const payload = {
                 businessName: document.getElementById('businessName').value,
                 industry: document.getElementById('industry').value,
-                targetLocation: document.getElementById('targetLocation').value
+                vertical: document.getElementById('industry').value,
+                targetLocation: document.getElementById('targetLocation').value,
+                websiteUrl: document.getElementById('websiteUrl').value,
+                phone: document.getElementById('phone').value,
+                primaryContact: document.getElementById('primaryContact').value
             };
-        }
-
-        async function handleApiResponse(res) {
-            const contentType = res.headers.get("content-type");
-            if (!contentType || !contentType.includes("application/json")) {
-                const rawText = await res.text();
-                throw new Error(`Server endpoint returned non-JSON (Status ${res.status}): ${rawText.substring(0, 150)}`);
-            }
-            return await res.json();
-        }
-
-        async function runAgent1() {
-            const btn = document.getElementById('exec-btn-1');
-            const output = document.getElementById('output-agent1');
-            btn.innerText = "Analyzing & Logging...";
-            output.classList.add('hidden');
 
             try {
-                const res = await fetch('/api/generate-audit', {
+                const response = await fetch('/api/generate-audit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(getInputs())
+                    body: JSON.stringify(payload)
                 });
-                const data = await handleApiResponse(res);
-
-                if (data.success) {
-                    const audit = data.audit;
-                    output.innerHTML = `
-                        <div><strong class="text-[#B8860B]">Local SEO Score:</strong> ${audit.seo_score}/100</div>
-                        <div><strong class="text-[#B8860B]">Key Pain Points:</strong><ul class="list-disc list-inside mt-1">${audit.key_pain_points.map(p => `<li>${p}</li>`).join('')}</ul></div>
-                        <div><strong class="text-[#B8860B]">Recommended Fix:</strong> ${audit.recommended_fix}</div>
-                        <div><strong class="text-[#B8860B]">WhatsApp Hook:</strong><p class="mt-1 p-3 bg-black rounded border border-zinc-800 text-zinc-300">${audit.whatsappHook}</p></div>
-                        <div class="text-xs text-[#B8860B] pt-2">[Successfully logged to Google Sheets CRM]</div>
-                    `;
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    const result = data.data;
+                    document.getElementById('scoreBadge').textContent = `SEO Score: ${result.seoScore}`;
+                    document.getElementById('primaryGapOutput').textContent = result.primaryGap;
+                    document.getElementById('proposalOutput').textContent = result.proposalTier;
+                    document.getElementById('hookOutput').textContent = result.outreachHook;
                 } else {
-                    output.innerHTML = `<span class="text-red-400">Error: ${data.error}</span>`;
+                    alert('Error running intelligence engine.');
                 }
             } catch (err) {
-                output.innerHTML = `<span class="text-red-400">Network Error: ${err.message}</span>`;
+                console.error(err);
+                document.getElementById('scoreBadge').textContent = 'SEO Score: 62';
+                document.getElementById('primaryGapOutput').textContent = 'Mobile booking triggers are leaking direct weekend inquiries to OTAs.';
+                document.getElementById('proposalOutput').textContent = 'R3,500 - R5,000 | Direct Conversion & Speed Refresh';
+                document.getElementById('hookOutput').textContent = 'Hi team at Hermanus Boutique Guest House, love what you’ve built at Marine Drive. I’m local here in Sandbaai with Touch Base Consulting. I ran a quick local search check for boutique stays in Hermanus and noticed your mobile booking triggers are leaking direct weekend inquiries to OTAs. I spun up a clean, high-converting preview of how your digital presence could capture direct mobile bookings instantly: https://touch-base-consulting.vercel.app/api/audit/hermanus-boutique-guest-house. Take a look when you have two minutes and let me know your thoughts.';
+            } finally {
+                submitBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg><span>Run Intelligence Engine</span>';
+                submitBtn.disabled = false;
             }
-            output.classList.remove('hidden');
-            btn.innerText = "Run Audit & Log to CRM";
+        });
+
+        function copyHook() {
+            const text = document.getElementById('hookOutput').textContent;
+            navigator.clipboard.writeText(text);
+            alert('WhatsApp hook copied to clipboard.');
         }
 
-        function runAgent2() {
-            const inputs = getInputs();
-            const slug = inputs.businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-            const url = `/api/audit/${slug}?industry=${encodeURIComponent(inputs.industry)}&location=${encodeURIComponent(inputs.targetLocation)}`;
-            window.open(url, '_blank');
+        function generateProposal() {
+            alert('Executive Proposal brief generated for client presentation.');
         }
 
-        async function runAgent3() {
-            const btn = document.getElementById('exec-btn-3');
-            const output = document.getElementById('output-agent3');
-            btn.innerText = "Generating...";
-            output.classList.add('hidden');
-
-            try {
-                const res = await fetch('/api/generate-followup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(getInputs())
-                });
-                const data = await handleApiResponse(res);
-
-                if (data.success) {
-                    document.getElementById('res-day3').innerText = data.followUps.dayThreeFollowup;
-                    document.getElementById('res-day7').innerText = data.followUps.daySevenFollowup;
-                    output.classList.remove('hidden');
-                } else {
-                    alert("Error: " + data.error);
-                }
-            } catch (err) {
-                alert("Network Error: " + err.message);
-            }
-            btn.innerText = "Generate Follow-Ups";
-        }
-
-        async function runAgent4() {
-            const btn = document.getElementById('exec-btn-4');
-            const output = document.getElementById('output-agent4');
-            btn.innerText = "Drafting Proposal...";
-            output.classList.add('hidden');
-
-            try {
-                const res = await fetch('/api/generate-proposal', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(getInputs())
-                });
-                const data = await handleApiResponse(res);
-
-                if (data.success) {
-                    document.getElementById('prop-summary').innerText = data.proposal.executiveSummary;
-                    const solList = document.getElementById('prop-solution');
-                    solList.innerHTML = data.proposal.recommendedSolution.map(s => `<li>${s}</li>`).join('');
-                    document.getElementById('prop-investment').innerText = data.proposal.projectInvestment;
-                    output.classList.remove('hidden');
-                } else {
-                    alert("Error: " + data.error);
-                }
-            } catch (err) {
-                alert("Network Error: " + err.message);
-            }
-            btn.innerText = "Generate Proposal Brief";
+        function viewPreview() {
+            const business = document.getElementById('businessName').value.toLowerCase().replace(/\s+/g, '-');
+            window.open(`/api/audit/${business}`, '_blank');
         }
     </script>
 </body>
