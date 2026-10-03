@@ -12,6 +12,7 @@ touch-base-engine/
 ├── shared/                      # Cross-cutting data models & schemas
 │   └── intake.py                # Normalized BusinessProfile Pydantic model
 ├── public/                      # Frontend Dashboard UI
+
 │   └── index.html               # Polished Tailwind UI (Harvest Gold & Obsidian)
 ├── server.js                    # Local Express gateway & preview renderer
 ├── package.json                 # Root Node dependencies & start scripts
