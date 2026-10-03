@@ -1,0 +1,9 @@
+{
+  "name": "@octocat/my-package",
+  "version": "1.0.0",
+  "description": "My package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octocat/my-repo.git"
+  }
+}
