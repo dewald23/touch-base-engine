@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required business parameters.' }, { status: 400 });
     }
 
+    // 1. Generate AI Diagnostic Insight via Gemini
     const prompt = `You are a Principal Digital Growth Strategist for Touch Base Consulting in the Overberg, South Africa. 
     Analyze this local business:
     - Business: ${businessName}
@@ -29,6 +30,7 @@ export async function POST(req: NextRequest) {
 
     const aiAnalysis = response.text || 'High mobile latency detected on legacy infrastructure.';
 
+    // 2. Persist Lead to Supabase
     const { data: leadData, error: dbError } = await supabase
       .from('audit_leads')
       .insert([
@@ -40,11 +42,12 @@ export async function POST(req: NextRequest) {
       console.error('Supabase Error:', dbError.message);
     }
 
-    const businessWhatsAppNumber = '27820000000'; // Update with your actual WhatsApp number
+    // 3. Construct WhatsApp Direct Action Link
+    const businessWhatsAppNumber = '27820000000'; // Replace with your actual WhatsApp number
     const waMessage = encodeURIComponent(
       `Hi Touch Base team, I ran the audit for ${businessName} in ${location}. Let's discuss upgrading our edge performance.`
     );
-    const whatsappLink = `https://wa.me/${businessBusinessWhatsAppNumber = businessWhatsAppNumber}?text=${waMessage}`;
+    const whatsappLink = `https://wa.me/${businessWhatsAppNumber}?text=${waMessage}`;
 
     return NextResponse.json({
       success: true,
